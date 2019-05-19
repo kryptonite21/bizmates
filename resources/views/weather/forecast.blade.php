@@ -2,8 +2,13 @@
 
 @section('content')
 <br />  
+
 <a href="{{url('/')}}" class="btn btn-default">Back</a>
+
 <h2>{{ $city }}'s 5-day Forecast</h2>
+<p>Date: <?php echo date('M d, Y'); ?></p>
+<p>Time: <?php echo date('H:i:s'); ?></p>
+
 <div class="row">
 @forelse($forecast as $row)
 

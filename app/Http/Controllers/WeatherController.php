@@ -6,20 +6,20 @@ use Illuminate\Http\Request;
 use App\Services\WeatherService;
 
 /**
- * Undocumented class
+ * Weather Controller
  */
 class WeatherController extends Controller
 {
 
     /**
-     * Undocumented variable
+     * Weather service dependency
      *
      * @var [type]
      */
     private $weatherService;
 
     /**
-     * Undocumented function
+     * Constructor
      *
      * @param WeatherService $service
      */
@@ -28,7 +28,7 @@ class WeatherController extends Controller
     }
 
     /**
-     * Undocumented function
+     * Index page
      *
      * @return void
      */
@@ -44,7 +44,7 @@ class WeatherController extends Controller
     }
 
     /**
-     * Undocumented function
+     * Forecast page
      *
      * @param [type] $id
      * @return void

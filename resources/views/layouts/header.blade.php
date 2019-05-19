@@ -13,10 +13,9 @@
     
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="{{ url('/') }}">Home</a></li>
-            <li><a href="{{ url('about') }}">About</a></li>
-            <li><a href="{{ url('contact') }}">Contact Us</a></li>
-            <li><a href="{{ url('faqs') }}">FAQs</a></li>
+            <li class="{{ (request()->is('/')) ? 'active' : '' }}"><a href="{{ url('/') }}">Home</a></li>
+            <li class="{{ (request()->is('about')) ? 'active' : '' }}"><a href="{{ url('about') }}">About</a></li>
+            <li class="{{ (request()->is('contact')) ? 'active' : '' }}"><a href="{{ url('contact') }}">Contact Us</a></li>
           </ul>
         </div>
       </div>

@@ -12,4 +12,13 @@
 */
 
 Route::get('/', 'WeatherController@index');
+
 Route::get('/forecast/{city}', 'WeatherController@forecast');
+
+Route::get('/about', function(){
+    return view('about');
+});
+
+Route::get('/contact', function(){
+    return view('contact');
+});

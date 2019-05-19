@@ -4,12 +4,12 @@ namespace App\Services;
 use App\Weather;
 
 /**
- * Undocumented class
+ * Weather Service
  */
 class WeatherService
 {
     /**
-     * Undocumented function
+     * Get request
      *
      * @param [type] $cities
      * @return void
@@ -28,7 +28,7 @@ class WeatherService
     }
 
     /**
-     * Undocumented function
+     * Parse weather
      *
      * @param [type] $weatherInfo
      * @return void
@@ -49,9 +49,9 @@ class WeatherService
     }
 
     /**
-     * Undocumented function
+     * Get Request Forecast
      *
-     * @param [type] $city_id
+     * @param [type] $city_name
      * @return void
      */
     public function getRequestForecast($city_name)
@@ -67,7 +67,7 @@ class WeatherService
     }
 
     /**
-     * Undocumented function
+     * Parse Forecast
      *
      * @param [type] $forecastArray
      * @return void
