@@ -17,7 +17,7 @@
                 <h4><?php echo $row['city_name'].', '.$row['country']; ?></h4>
                 <p><?php echo $row['temperature'] ?> &deg;C</p>
                 <p><?php echo $row['description'] ?></p>
-                <a href="{{ url('forecast') }}/<?php echo $row['city_name']; ?>" class="btn btn-primary">Forecast</a>
+                <a href="{{ url('forecast') }}/<?php echo $row['city_name']; ?>" class="btn btn-warning">Forecast</a>
             </div>
         </div>
 </div>
