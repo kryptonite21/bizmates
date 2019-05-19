@@ -5,22 +5,38 @@ use App\Weather;
 
 class WeatherService
 {
-    public function getRequest($data)
+    public function getRequest($cities)
     {
-        $city_name = $data['name'];
-        $api_url = 'http://api.openweathermap.org/data/2.5/weather?q='.$city_name.',PH&APPID=a0c5df1a62c583c73c2f187d32c9f315&units=metric';
-        $data = file_get_contents($api_url);
-        return $data;
+        $weatherInfo = [];
+        $appId = 'a0c5df1a62c583c73c2f187d32c9f315';
+        $units = 'units=metric';
+
+        foreach($cities as $city){
+            $api_url = 'http://api.openweathermap.org/data/2.5/weather?q='.$city.',JP&APPID='.$appId.'&'.$units;
+            $weatherInfo[] = json_decode(file_get_contents($api_url));
+        }
+
+
+
+
+        return $this->parseWeather($weatherInfo);
     
     }
 
-    public function parseWeather($data)
+    public function parseWeather($weatherInfo)
     {
-        $city = json_decode($data);
 
-        //City array data
+        $formattedWeather = [];
+        $formattedContainer = [];
+        foreach($weatherInfo as $weather){
+            $formattedWeather['city_name'] = $weather->name;
+            $formattedWeather['country'] = $weather->sys->country;
+            $formattedWeather['temperature'] = $weather->main->temp;
+            $formattedWeather['description'] = $weather->weather[0]->description;
+            $formattedContainer[] = $formattedWeather;
+        }
 
-        return $city;
+        return $formattedContainer;
     }
 
     public function parseForecast($data){
