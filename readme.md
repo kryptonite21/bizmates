@@ -1,4 +1,4 @@
-# Bizmates Simple Weather App in Laravel 5.5
+# Bizmates Simple Weather App
 
 This app aims to provide weather information of Japan for foreign tourists visiting Japan for the first time.
 
