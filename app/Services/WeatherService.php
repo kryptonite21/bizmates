@@ -35,7 +35,7 @@ class WeatherService
     public function getRequestForecast($city_id)
     {
         $weatherInfo = [];
-        $appId = 'a0c5df1a62c583c73c2f187d32c9f315';
+        $appId = 'daf02c61391f9f612411ad0bd83240ed';
         $units = 'units=metric';
 
 
@@ -69,7 +69,7 @@ class WeatherService
         }
 
 
-        $api_url = 'http://api.openweathermap.org/data/2.5/forecast?q='.$city_name.',JP&APPID='.$appId.'&'.$units;
+        $api_url = 'http://api.openweathermap.org/data/2.5/forecast/daily?q='.$city_name.',JP&APPID='.$appId.'&'.$units;
         $weatherInfo = json_decode(file_get_contents($api_url));
         return $this->parseForecast($weatherInfo);
     }
@@ -77,7 +77,7 @@ class WeatherService
     public function parseForecast($forecastArray){
         foreach($forecastArray->list as $row){
 
-            $forecastInfo['dt_txt'] = $row->dt_txt;
+            $forecastInfo['dt_txt'] = date('m-d-Y', $row->dt);
             $forecastInfo['main'] = $row->weather[0]->main;
             $forecastInfo['description'] = $row->weather[0]->description;
             $forecastInfo['temp'] = $row->main->temp;
