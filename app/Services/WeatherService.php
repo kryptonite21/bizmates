@@ -3,21 +3,36 @@ namespace App\Services;
 
 use App\Weather;
 
+/**
+ * Undocumented class
+ */
 class WeatherService
 {
+    /**
+     * Undocumented function
+     *
+     * @param [type] $cities
+     * @return void
+     */
     public function getRequest($cities)
     {
         $weatherInfo = [];
         $appId = 'a0c5df1a62c583c73c2f187d32c9f315';
-        $units = 'units=metric';
+        $units = 'metric';
 
         foreach($cities as $city){
-            $api_url = 'http://api.openweathermap.org/data/2.5/weather?q='.$city.',JP&APPID='.$appId.'&'.$units;
+            $api_url = 'http://api.openweathermap.org/data/2.5/weather?q='.$city.'&APPID='.$appId.'&units='.$units;
             $weatherInfo[] = json_decode(file_get_contents($api_url));
         }
         return $this->parseWeather($weatherInfo);
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param [type] $weatherInfo
+     * @return void
+     */
     public function parseWeather($weatherInfo)
     {
         $formattedWeather = [];
@@ -27,69 +42,52 @@ class WeatherService
             $formattedWeather['country'] = $weather->sys->country;
             $formattedWeather['temperature'] = $weather->main->temp;
             $formattedWeather['description'] = $weather->weather[0]->description;
+            $formattedWeather['icon'] = $weather->weather[0]->icon.'.png';
             $formattedContainer[] = $formattedWeather;
         }
         return $formattedContainer;
     }
 
-    public function getRequestForecast($city_id)
+    /**
+     * Undocumented function
+     *
+     * @param [type] $city_id
+     * @return void
+     */
+    public function getRequestForecast($city_name)
     {
         $weatherInfo = [];
         $appId = 'daf02c61391f9f612411ad0bd83240ed';
-        $units = 'units=metric';
+        $units = 'metric';
+        $days = 5;
 
-
-        switch($city_id){
-            case 0:
-                $city_name = 'Tokyo';
-            break;
-
-            case 1:
-                $city_name = 'Yokohama';
-            break;
-            
-            case 2:
-                $city_name = 'Kyoto';
-            break;
-
-            case 3:
-                $city_name = 'Osaka';
-            break;
-
-            case 4:
-                $city_name = 'Sapporo';
-            break;
-
-            case 5:
-                $city_name = 'Nagoya';
-            break;
-
-            default:
-                $city_name = 'Tokyo';
-        }
-
-
-        $api_url = 'http://api.openweathermap.org/data/2.5/forecast/daily?q='.$city_name.',JP&APPID='.$appId.'&'.$units;
+        $api_url = 'http://api.openweathermap.org/data/2.5/forecast/daily?q='.$city_name.'&APPID='.$appId.'&units='.$units.'&cnt='.$days;
         $weatherInfo = json_decode(file_get_contents($api_url));
         return $this->parseForecast($weatherInfo);
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param [type] $forecastArray
+     * @return void
+     */
     public function parseForecast($forecastArray){
         foreach($forecastArray->list as $row){
 
-            $forecastInfo['dt_txt'] = date('m-d-Y', $row->dt);
+            $forecastInfo['dt_txt'] = date('D', $row->dt);
+            $forecastInfo['hour'] = date('H:i', $row->dt);
             $forecastInfo['main'] = $row->weather[0]->main;
             $forecastInfo['description'] = $row->weather[0]->description;
-            $forecastInfo['temp'] = $row->main->temp;
-            $forecastInfo['temp_min'] = $row->main->temp_min;
-            $forecastInfo['temp_max'] = $row->main->temp_max;
-            $forecastInfo['pressure'] = $row->main->pressure;
-            $forecastInfo['humidity'] = $row->main->humidity;
-            
+            $forecastInfo['icon'] = $row->weather[0]->icon.'.png';
 
+            $forecastInfo['temp_min'] = $row->temp->min;
+            $forecastInfo['temp_max'] = $row->temp->max;
+            $forecastInfo['pressure'] = $row->pressure;
+            $forecastInfo['humidity'] = $row->humidity;
+            
             $formattedContainer[] = $forecastInfo;
         }
-
         return $formattedContainer;
     }
 

@@ -3,20 +3,20 @@
 @section('content')
 <br />  
 <a href="{{url('/')}}" class="btn btn-default">Back</a>
-<h2>Forecast</h2>
+<h2>{{ $city }}'s 5-day Forecast</h2>
 <div class="row">
 @forelse($forecast as $row)
 
-        <div class="col-sm-6 col-md-4">
+        <div class="col-md-2">
           <div class="thumbnail">
             <div class="caption">
-            <img src="{{asset('logo/weather_logo.png')}}" width="100px">
-            <h3><?php echo $row['main'] ?></h3>
-              <p>Date: <?php echo date('M d, Y H:i:s', strtotime($row['dt_txt'])) ?></p>
-              <p>Description: <?php echo $row['description'] ?></p>
-              <p>Temperature: <?php echo $row['temp'] ?></p>
-              <p>Min: <?php echo $row['temp_min'] ?></p>
-              <p>Max: <?php echo $row['temp_max'] ?></p>
+            <p class="pull-right"><small><?php echo $row['hour'] ?></small></p>
+            <img src="{{asset('weather')}}/<?php echo $row['icon']; ?>" width="90px">
+            <h3><?php echo $row['dt_txt'] ?></h3>
+              <p><?php echo $row['main']; ?></p>
+              <p><strong><?php echo $row['description'] ?></strong></p>
+              <p>Min: <?php echo $row['temp_min'] ?>&deg; C</p>
+              <p>Max: <?php echo $row['temp_max'] ?>&deg; C</p>
               <p>Humidity: <?php echo $row['pressure'] ?></p>
             </div>
           </div>
