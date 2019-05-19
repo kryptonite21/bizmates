@@ -10,4 +10,9 @@ class WeatherController extends Controller
     {
         return view('weather.index');
     }
+
+    public function forecast($id)
+    {
+        return view('weather.forecast');
+    }
 }

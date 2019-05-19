@@ -12,3 +12,4 @@
 */
 
 Route::get('/', 'WeatherController@index');
+Route::get('/forecast/{id}', 'WeatherController@forecast');
