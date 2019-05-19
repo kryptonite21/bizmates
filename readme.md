@@ -2,7 +2,14 @@
 ___
 This app aims to provide weather information of Japan for foreign tourists visiting Japan for the first time.
 
-# Features
+## Why this app?
+  - Automatic Responsiveness
+  - Consistency
+  - Customizable
+  - It renders an enhanced user experience to the users
+  - Simplicity is beauty
+  
+## Features
 
   - Current Weather
   - Weather Forecast 
