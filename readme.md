@@ -4,11 +4,10 @@ _________________
 This app aims to provide weather information of Japan for foreign tourists visiting Japan for the first time.
 
 ## Why this app?
+  - Simplicity is beauty
   - Automatic Responsiveness
-  - Consistency
   - Customizable
   - It renders an enhanced user experience to the users
-  - Simplicity is beauty
   
 ## Features
 
@@ -25,7 +24,7 @@ This app aims to provide weather information of Japan for foreign tourists visit
 
 ### Installation
 
-The app requires [XAMPP](https://www.apachefriends.org/download.html) [Laravel 5.4](https://laravel.com/docs/5.5/installation) to run.
+The app requires [XAMPP](https://www.apachefriends.org/download.html) [Laravel 5.4+](https://laravel.com/docs/5.5/installation) to run.
 
 The vendor directory is included in the repository.
 
