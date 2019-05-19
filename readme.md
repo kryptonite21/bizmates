@@ -23,7 +23,7 @@ This app aims to provide weather information of Japan for foreign tourists visit
 
 ### Installation
 
-The app requires [XAMPP](https://www.apachefriends.org/download.html) [Laravel 5.5+](https://laravel.com/docs/5.5/installation) to run.
+The app requires [XAMPP](https://www.apachefriends.org/download.html) and [Laravel 5.5+](https://laravel.com/docs/5.5/installation) to run.
 
 The vendor directory is included in the repository.
 
