@@ -24,6 +24,7 @@ class WeatherController extends Controller
 
     public function forecast($id)
     {
-        return view('weather.forecast');
+        $forecast = $this->weatherService->getRequestForecast($id);
+        return view('weather.forecast', compact('forecast'));
     }
 }
